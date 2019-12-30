@@ -30,7 +30,10 @@ function App() {
 	}
 
 
-	function handleLogout() {
+	async function handleLogout() {
+		// Clear the Session on Logout
+		await Auth.signOut();
+
 		userHasAuthenticated(false);
 	} 
 
