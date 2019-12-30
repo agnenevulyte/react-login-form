@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 
-export default function Routes() {
-	return (
-		<Switch>
-			<Route path="/" exact component={Home} />
-		</Switch>
-	);
-}
+const Routes = () => (
+	<Switch>
+		<Route exact path="/" component={Home} />
+	</Switch>
+);
+
+export default Routes;
