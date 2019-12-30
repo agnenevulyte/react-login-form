@@ -13,7 +13,7 @@ function App() {
 	return (
 		<div className="App container">
 			<NavBar handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
-			<Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+			<Routes appProps={{ isAuthenticated, userHasAuthenticated }} /> {/* Pass the Session State to the Routes */}
 		</div>
 	);
 }
