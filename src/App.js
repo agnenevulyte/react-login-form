@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Routes from './containers/Routing/Routes';
 import NavBar from './containers/Navbar';
-// import Login from './containers/Login';
-import Signup from './containers/Signup';
 
 function App() {
+	const [isAuthenticated, userHasAuthenticated] = useState(false);
+
+	function handleLogout() {
+		userHasAuthenticated(false);
+	} 
+
 	return (
 		<div className="App container">
-			<NavBar />
-			<Routes />
-			{/* <h1>My App</h1> */}
-			{/* <Login/> */}
-			{/* <Signup /> */}
+			<NavBar handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
+			<Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
 		</div>
 	);
 }
