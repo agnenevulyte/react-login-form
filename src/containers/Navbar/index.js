@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, NavItem } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+import './Navbar.css';
 
 export default function NavBar() {
 	return (
@@ -8,7 +10,6 @@ export default function NavBar() {
 			<Navbar.Brand as={Link} to="/">
 				<img src="/favicon.ico" width="30" height="30" className="d-inline-block align-top" alt="Main logo" />
 			</Navbar.Brand>
-			{/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
@@ -37,6 +38,24 @@ export default function NavBar() {
 						</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
+				<Nav pullRight>
+					<LinkContainer to="/signup">
+						<NavItem className="nav-link">Signup</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/login">
+						<NavItem className="nav-link">Login</NavItem>
+					</LinkContainer>
+				</Nav>
+				{/* <Nav pullRight>
+					<Form className="navButtons">
+						<Button variant="outline-success" as={Link} to="/login">
+							Login
+						</Button>
+						<Button variant="outline-primary" as={Link} to="/signup">
+							Signup
+						</Button>
+					</Form>
+				</Nav> */}
 			</Navbar.Collapse>
 		</Navbar>
 	);
