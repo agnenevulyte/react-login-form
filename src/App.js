@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Routes from './Routes';
+import Routes from './containers/Routing/Routes';
 import NavBar from './containers/Navbar';
 // import Login from './containers/Login';
 import Signup from './containers/Signup';
