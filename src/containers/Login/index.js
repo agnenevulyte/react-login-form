@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
-// import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Auth } from 'aws-amplify';
 import "./Login.css";
 
@@ -17,8 +16,10 @@ export default function Login(props) {
 
 	  try {
 		  Auth.signIn(email, password);
-		  alert('Logged in');
+		  // alert('Logged in');
 		  props.userHasAuthenticated(true);
+		  // redirect to the home page once logged in
+		  props.history.push('/');
 	  } catch (e) {
 		  alert(e.message);
 	  }
