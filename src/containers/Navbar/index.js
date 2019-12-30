@@ -4,7 +4,8 @@ import { Navbar, Nav, NavDropdown, NavItem } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import './Navbar.css';
 
-export default function NavBar() {
+export default function NavBar({handleLogout, isAuthenticated}) {
+
 	return (
 		<Navbar bg="light" expand="lg" fluid>
 			<Navbar.Brand as={Link} to="/">
@@ -39,23 +40,18 @@ export default function NavBar() {
 					</NavDropdown>
 				</Nav>
 				<Nav pullRight>
-					<LinkContainer to="/signup">
-						<NavItem className="nav-link">Signup</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/login">
-						<NavItem className="nav-link">Login</NavItem>
-					</LinkContainer>
+					{isAuthenticated
+						? <NavItem onClick={handleLogout}>Logout</NavItem>
+						: <>
+							<LinkContainer to="/signup">
+								<NavItem className="nav-link">Signup</NavItem>
+							</LinkContainer>
+							<LinkContainer to="/login">
+								<NavItem className="nav-link">Login</NavItem>
+							</LinkContainer>
+						</>
+					}
 				</Nav>
-				{/* <Nav pullRight>
-					<Form className="navButtons">
-						<Button variant="outline-success" as={Link} to="/login">
-							Login
-						</Button>
-						<Button variant="outline-primary" as={Link} to="/signup">
-							Signup
-						</Button>
-					</Form>
-				</Nav> */}
 			</Navbar.Collapse>
 		</Navbar>
 	);
