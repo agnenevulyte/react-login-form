@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
+import { FormGroup, FormControl, Form } from "react-bootstrap";
+import LoaderButton from '../LoaderButton';
 import { Auth } from 'aws-amplify';
 import "./Login.css";
 
 export default function Login(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
   
 	function validateForm() {
 	  return email.length > 0 && password.length > 0;
@@ -14,14 +16,18 @@ export default function Login(props) {
 	async function handleSubmit(event) {
 	  event.preventDefault();
 
+	  setIsLoading(true);
 	  try {
 		  Auth.signIn(email, password);
 		  // alert('Logged in');
 		  props.userHasAuthenticated(true);
 		  // redirect to the home page once logged in
 		  props.history.push('/');
+		  console.log("-------------------logged in")
 	  } catch (e) {
 		  alert(e.message);
+		  console.log('-------------------some error message')
+		  setIsLoading(false);
 	  }
 	}
   
@@ -45,9 +51,18 @@ export default function Login(props) {
 			  type="password"
 			/>
 		  </FormGroup>
-		  <Button block bsSize="large" disabled={!validateForm()} type="submit">
+		  {/* <Button block bsSize="large" disabled={!validateForm()} type="submit">
 			Login
-		  </Button>
+		  </Button> */}
+		  <LoaderButton
+			block
+			type="submit"
+			bsSize="large"
+			isLoading={isLoading}
+			disabled={!validateForm()}
+		  >
+			Login
+		  </LoaderButton>
 		</form>
 	  </div>
 	);

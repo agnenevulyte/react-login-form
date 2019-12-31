@@ -36,6 +36,7 @@ function App(props) {
 		await Auth.signOut();
 
 		userHasAuthenticated(false);
+		console.log("-------------------logged out")
 		// if logged out, redirect to login page
 		props.history.push('/login');
 	} 
