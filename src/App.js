@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Auth } from 'aws-amplify'
 import Routes from './containers/Routing/Routes';
 import NavBar from './containers/Navbar';
+import Footer from './containers/Footer';
 
 function App(props) {
 	const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -46,6 +47,7 @@ function App(props) {
 		<div className="App container">
 			<NavBar handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
 			<Routes appProps={{ isAuthenticated, userHasAuthenticated }} /> {/* Pass the Session State to the Routes */}
+			<Footer/>
 		</div>
 	);
 }
