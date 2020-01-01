@@ -29,6 +29,7 @@ export default function Signup(props) {
     email: "",
     password: "",
     confirmPassword: "",
+    address: "",
     confirmationCode: ""
   });
   const [newUser, setNewUser] = useState(null);
@@ -38,7 +39,8 @@ export default function Signup(props) {
     return (
       fields.email.length > 0 &&
       fields.password.length > 0 &&
-      fields.password === fields.confirmPassword
+      fields.password === fields.confirmPassword &&
+      fields.address.length > 0
     );
   }
 
@@ -113,6 +115,14 @@ export default function Signup(props) {
             type="password"
             onChange={handleFieldChange}
             value={fields.confirmPassword}
+          />
+        </FormGroup>
+        <FormGroup controlId="address">
+        <Form.Label>Address</Form.Label>
+          <FormControl
+            type="text"
+            onChange={handleFieldChange}
+            value={fields.address}
           />
         </FormGroup>
         <LoaderButton
