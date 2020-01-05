@@ -1,5 +1,6 @@
 // https://serverless-stack.com/chapters/configure-aws-amplify.html
 export default {
+	MAX_ATTACHMENT_SIZE: 5000000,
 	s3: {
 		REGION: 'eu-west-1',
 		BUCKET: 'notes-app-2020-uploads'
