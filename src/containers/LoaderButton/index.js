@@ -14,9 +14,8 @@ export default function LoaderButton({
       disabled={disabled || isLoading}
       {...props}
     >
-      {isLoading && <i class="fa fa-refresh fa-spin-custom"></i>}
+      {isLoading && <i className="fa fa-refresh fa-spin-custom"></i>}
       {props.children}
     </Button>
-    
   );
 }
